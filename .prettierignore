@@ -1,0 +1,4 @@
+public/markdowns
+node_modules
+build
+.git
