@@ -1,5 +1,19 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
+export {
+  ThemeStateProvider,
+  useThemeContext,
+  ThemeStateContext,
+  type ThemeStateProviderProps
+}
+
+const lockTheme = 'light'
+const defaultTheme = 'light'
+const lightBg = '#fff'
+const darkBg = '#000'
+const lightColor = '#000'
+const darkColor = '#fff'
+
 interface IThemeStateContext {
   theme: 'light' | 'dark' | undefined
   setTheme: React.Dispatch<React.SetStateAction<'light' | 'dark' | undefined>>
@@ -13,22 +27,26 @@ interface ThemeStateProviderProps {
   children: React.ReactNode
 }
 
-function ThemeStateProvider(props: ThemeStateProviderProps): JSX.Element {
+function ThemeStateProvider(props: ThemeStateProviderProps) {
   const [theme, setTheme] = useState<'light' | 'dark' | undefined>(
-    localStorage.theme || 'dark'
+    localStorage.theme || defaultTheme
   )
 
   useEffect(() => {
     const root = window.document.documentElement
 
     const delTheme = theme === 'dark' ? 'light' : 'dark'
-    const newTheme = theme || 'dark'
+    let newTheme = theme || defaultTheme
+    if (lockTheme) newTheme = lockTheme
 
     root.classList.remove(delTheme)
     root.classList.add(newTheme)
 
-    document.getElementById('html')!.style.backgroundColor =
-      newTheme === 'light' ? '#fff' : '#1d1d1b'
+    const html = document.getElementById('html')
+    if (html) {
+      html.style.color = newTheme === 'light' ? lightColor : darkColor
+      html.style.backgroundColor = newTheme === 'light' ? lightBg : darkBg
+    }
 
     localStorage.setItem('theme', newTheme)
   }, [theme])
@@ -54,5 +72,3 @@ function useThemeContext(): IThemeStateContext {
   }
   return context
 }
-
-export { ThemeStateProvider, useThemeContext, ThemeStateContext }

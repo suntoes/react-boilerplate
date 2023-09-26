@@ -1,8 +1,15 @@
 import { DarkModeSwitch } from 'react-toggle-dark-mode'
 
-import { useThemeContext } from 'components/theme-state-provider'
+import { useThemeContext } from 'components/reusable'
 
-export default function ToggleThemeButton(): JSX.Element {
+const sunColor = '#000'
+const moonColor = '#fff'
+
+export { ToggleThemeButton, type ToggleThemeButtonProps }
+
+interface ToggleThemeButtonProps {}
+
+function ToggleThemeButton() {
   const { theme, setTheme } = useThemeContext()
 
   const handleChange = checked => {
@@ -19,8 +26,7 @@ export default function ToggleThemeButton(): JSX.Element {
         !theme || theme === 'dark'
       }
       onChange={handleChange}
-      sunColor="#000"
-      moonColor="#fff"
+      {...{ sunColor, moonColor }}
     />
   )
 }

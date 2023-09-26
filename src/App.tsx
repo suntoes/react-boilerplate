@@ -1,14 +1,18 @@
 import { BrowserRouter } from 'react-router-dom'
 import React from 'react'
 
-import { ThemeStateProvider } from 'components/theme-state-provider'
-import Routes from 'animated-routes'
+import { ThemeStateProvider } from 'components/reusable'
+import { AnimatedRoutes } from 'animated-routes'
 
-export default function App(): JSX.Element {
+export { App, type AppProps }
+
+interface AppProps {}
+
+function App() {
   return (
     <ThemeStateProvider>
       <BrowserRouter>
-        <Routes />
+        <AnimatedRoutes />
       </BrowserRouter>
     </ThemeStateProvider>
   )

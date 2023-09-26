@@ -2,9 +2,13 @@ import { Route, Routes, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 
-import Home from 'compositions/home'
+import { Home } from 'compositions/public'
 
-export default function AnimatedRoutes(): JSX.Element {
+export { AnimatedRoutes, type AnimatedRoutesProps }
+
+interface AnimatedRoutesProps {}
+
+function AnimatedRoutes() {
   const location = useLocation()
 
   useEffect(() => {
