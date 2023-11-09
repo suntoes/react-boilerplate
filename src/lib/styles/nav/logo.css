@@ -1,0 +1,8 @@
+.logo * {
+  transition: all ease-in-out 0.25s;
+}
+
+.logo:hover img,
+.logo:focus img {
+  transform: rotate(20deg);
+}

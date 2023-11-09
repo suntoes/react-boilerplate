@@ -1,0 +1,77 @@
+.nav-items {
+  border: 1px solid rgba(226, 232, 255, 0.1);
+}
+
+.nav-item-ghost::before {
+  border: 1px solid rgba(223, 223, 245, 0.12);
+  content: '';
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: calc(100% - 0.125rem);
+  height: calc(100% - 0.125rem);
+  border-radius: inherit;
+  pointer-events: none;
+}
+::selection {
+  background: rgba(147, 130, 255, 0.5);
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+.nav-item-ghost {
+  background-color: #dfdff50d;
+  position: absolute;
+  top: 0.25rem;
+  left: 0.475rem;
+  height: 2.3125rem;
+  width: 5.5rem;
+  border-radius: inherit;
+}
+
+.nav-item-action {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 6px 14px;
+  color: #fff;
+  position: relative; 
+  background-image: linear-gradient(
+    96.34deg,
+    #926aff 0%,
+    #ff77b0 50%,
+    #ffb367 100%
+  );
+  background-image: linear-gradient(
+    96.34deg,
+    color(display-p3 0.5725490196 0.4156862745 1/1) 0%,
+    color(display-p3 1 0.4666666667 0.6901960784/1) 50%,
+    color(display-p3 1 0.7019607843 0.4039215686/1) 100%
+  );
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.nav-item-action::before {
+  background: linear-gradient(
+      263.83deg,
+      rgba(226, 232, 255, 0.2) -0.4%,
+      rgba(226, 232, 255, 0) 100.4%
+    ),
+    linear-gradient(0deg, rgba(226, 232, 255, 0.1), rgba(226, 232, 255, 0.1));
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: add, add;
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+}
